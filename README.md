@@ -1,6 +1,8 @@
 # repo for various models for Neurotech club
 NOTES:
 
+  The AlterEgo attempt didn't work very well, there is another notebook I didn't upload where I stacked the channels to make a 1d input channel and it didn't work at all, so I thought I'd do a loosely based attempt thats uses conv2D. It only seems to fit the train data while the test data is just randomly trained, haven't figured out why
+
   # Both EEGNet attempts are based on the paper as much as I interpreted, there is probably definitely some issues
   
   The EEGNet attempt 1. The train accuracy will decrease but the test one fluctuates. It's a single participant classification and based off of some online implementations I found, I happened to chose the participant that had very low accuracy levels in comparison to the others, which is probably partly why
