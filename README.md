@@ -1,6 +1,6 @@
 # NeuroTechSC - Machine Learning
 
-This is the NeuroTechSC git repository folder for the Machine Learning team. The main goal is to detect subvocal phonemes from surface Electromyography (sEMG) data using a Temporal Multi-Channel Vision Transformer (TMC-ViT) implemented in Python. This repository provides the implementation of the TMC-ViT model, data preprocessing, and training scripts for the sEMG dataset.
+This is the Git repository for the Machine Learning team of the NeuroTechSC organization. The main goal of our porject is to detect subvocal phonemes from surface Electromyography (sEMG) data using a Temporal Multi-Channel Vision Transformer (TMC-ViT) implemented in Python. This repository provides the python notebooks for the sEMG data preprocessing AND TMC-ViT model training.
 
 ## Overview
 
