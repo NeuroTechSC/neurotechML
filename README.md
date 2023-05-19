@@ -1,9 +1,32 @@
 # NeuroTechSC - Machine Learning
 
-This is the Git repository for the Machine Learning team of the NeuroTechSC organization. The main goal of our porject is to detect subvocal phonemes from surface Electromyography (sEMG) data using a Temporal Multi-Channel Vision Transformer (TMC-ViT) implemented in Python. This repository provides the python notebooks for the sEMG data preprocessing AND TMC-ViT model training.
+This is the Git repository for the Machine Learning team of the NeuroTechSC organization. The main goal of our project is to detect subvocal phonemes from surface Electromyography (sEMG) data using a Temporal Multi-Channel Vision Transformer (TMC-ViT) implemented in Python. This repository provides the Python notebooks for the sEMG data preprocessing and TMC-ViT model training.
 
 ## Overview
 
 This project aims to improve the performance of subvocal phoneme detection using machine learning techniques. Subvocal phonemes are the speech components generated when a person talks to themselves without producing any sound. Detecting these phonemes has various applications, including silent communication devices and assistive technologies for individuals with speech impairments.
 
 The TMC-ViT model used in this repository is a novel deep learning architecture that leverages the benefits of vision transformers and temporal multi-channel features to achieve improved performance on sEMG data. This model outperforms conventional methods such as CNNs and LSTMs in subvocal phoneme detection tasks.
+
+## Project Timeline
+
+1. Came up with a design plan and chose model architecture (TMC-ViT)
+2. Collected data for 5 phonemes
+3. Finished preprocessing data
+4. Analyzed data and presented findings at the California Neurotech Conference on April 29th, 2023
+5. Assessed model viability and are considering a pivot from TMC-ViT to an LSTM/RNN network
+
+### Next Steps
+
+1. Collect data on more phonemes, possibly modify the Cyton OpenBCI board to support 8 muscle groups instead of 4
+2. Make a pivot to RNN/LSTM or another architecture
+3. Assess the viability of a second model to correct phoneme/letter-level errors
+4. Build a real-time transcription app
+
+## File Descriptions
+
+- `LSTM_RNN.ipynb` - a model that reached ~100% test accuracy on our 5 phonemes, has training code + visualization
+- `EMG_Data_Processing.ipynb` - preprocessing script that cleans the data and formats it into training examples
+- `gtp_convos/gpt_convo.md` - a discussion on processing .adc files and modifying TMC-ViT code
+- `gtp_convos/gpt_convo_2.md` - a discussion on using transformer and RNN architectures for subvocal phoneme prediction
+- `data/` - folder which contains the raw .csv files from the recordings, as well as formatted example/label .npy files
