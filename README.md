@@ -10,7 +10,7 @@ The TMC-ViT model used in this repository is a novel deep learning architecture 
 
 ## Plan Amendment
 
-Now considering the use of a LSTM/RNN for phoneme recognition instead of the TNMC-ViT, check `gtp_convos/gpt_convo_2.md` for more information.
+Now considering the use of a LSTM/RNN for phoneme recognition instead of the TMC-ViT, check `gtp_convos/gpt_convo_2.md` for more information.
 
 ## Project Timeline
 
