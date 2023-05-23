@@ -95,17 +95,17 @@ The script processes the EMG data, normalizes it, segments it, generates trainin
 | Maximum segment length (ms)   | 1208.0    | 1495.0    | 1444.0    | 1280.0    | 1301.0    | 1495.0    |
 
 ### Training Example Generation
-| Training Data Info       | Length    |
+| Class                    | Count     |
 |--------------------------|-----------|
-| train_silence            | 649       |
-| train_b                  | 367       |
-| train_v                  | 718       |
-| train_i                  | 669       |
-| train_u                  | 638       |
-| train_o                  | 635       |
+| train_silence (0)           | 649       |
+| train_b (1)                 | 367       |
+| train_v (2)                 | 718       |
+| train_i (3)                 | 669       |
+| train_u (4)                 | 638       |
+| train_o (5)                 | 635       |
 
 ### Final Training Data
-| Data Shape               | Shape             |
+| Python Code              | Shape             |
 |--------------------------|-------------------|
 | X_train.shape            | (3676, 4, 10)     |
 | y_train.shape            | (3676,)           |
@@ -133,7 +133,7 @@ TBA
 
 9. Define an Early Stopping callback to monitor the 'val_accuracy' with a patience value of 100.
 
-10. Train the model using the fit function with the training and validation data, batch size of 128, and up to 300 epochs (initially).
+10. Train the model using the fit function with the training and validation data, batch size of 128, and up to 500 epochs (initially).
 
 11. Evaluate the model performance on the test set and print the test loss and accuracy scores.
 
@@ -145,7 +145,7 @@ TBA
 
 ## Machine Learning Results
 ### Train and Test Shapes
-| Data Shape               | Shape             |
+| Python Code              | Shape             |
 |--------------------------|-------------------|
 | X_train.shape            | (2940, 4, 10)     |
 | X_test.shape             | (736, 4, 10)      |
@@ -153,25 +153,26 @@ TBA
 ### Phoneme Example Distribution
 | Set                   | _       | b      | v      | i      | u      | o      |
 |-----------------------|---------|--------|--------|--------|--------|--------|
+| Original set (%)      | 100.0%  | 100.0% | 100.0% | 100.0% | 100.0% | 100.0% |
 | Original set          | 649     | 367    | 718    | 669    | 638    | 635    |
+|-----------------------|---------|--------|--------|--------|--------|--------|
+| Training set (%)      | 76.43%  | 82.02% | 80.08% | 81.31% | 81.98% | 78.90% |
 | Training set          | 496     | 301    | 575    | 544    | 523    | 501    |
+|-----------------------|---------|--------|--------|--------|--------|--------|
+| Test set (%)          | 23.57%  | 17.98% | 19.92% | 18.69% | 18.02% | 21.10% |
 | Test set              | 153     | 66     | 143    | 125    | 115    | 134    |
 
 ### Model Summary
-Model: "sequential"
-_________________________________________________________________
-| Layer (type)          | Output Shape      | Param #   |
+Model: "sequential"  
+Total params: 155,878
+| Layer (type)          | Output Shape      | Param Count   |
 |-----------------------|-------------------|-----------|
 | conv1d (Conv1D)       | (None, 2, 32)     | 992       |
 | conv1d_1 (Conv1D)     | (None, 2, 64)     | 2112      |
 | lstm (LSTM)           | (None, 2, 128)    | 98816     |
 | lstm_1 (LSTM)         | (None, 64)        | 49408     |
 | dense (Dense)         | (None, 64)        | 4160      |
-| dense_1 (Dense)       | (None, 6)         | 390       |
-=================================================================
-Total params: 155,878
-Trainable params: 155,878
-Non-trainable params: 0
+| dense_1 (Dense)       | (None, 6)         | 390       |  
 
 ### Evaluation Results on X_test
 | Evaluation Statistic     | Value             |
