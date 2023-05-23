@@ -131,3 +131,36 @@ The script processes the EMG data, normalizes it, segments it, generates trainin
 
 ## Machine Learning Results
 
+```
+| Data Shape               | Shape             |
+|--------------------------|-------------------|
+| X_train.shape            | (2940, 4, 10)     |
+| X_test.shape             | (736, 4, 10)      |
+
+| Set                   | _       | b      | v      | i      | u      | o      |
+|-----------------------|---------|--------|--------|--------|--------|--------|
+| Original set          | 649     | 367    | 718    | 669    | 638    | 635    |
+| Training set          | 496     | 301    | 575    | 544    | 523    | 501    |
+| Test set              | 153     | 66     | 143    | 125    | 115    | 134    |
+
+Model: "sequential"
+_________________________________________________________________
+| Layer (type)          | Output Shape      | Param #   |
+|-----------------------|-------------------|-----------|
+| conv1d (Conv1D)       | (None, 2, 32)     | 992       |
+| conv1d_1 (Conv1D)     | (None, 2, 64)     | 2112      |
+| lstm (LSTM)           | (None, 2, 128)    | 98816     |
+| lstm_1 (LSTM)         | (None, 64)        | 49408     |
+| dense (Dense)         | (None, 64)        | 4160      |
+| dense_1 (Dense)       | (None, 6)         | 390       |
+=================================================================
+Total params: 155,878
+Trainable params: 155,878
+Non-trainable params: 0
+
+![Loss Graph](loss.png)
+
+![Accuracy Graph](acc.png)
+
+![Confusion Matrix](conf.png)
+```
