@@ -75,15 +75,26 @@ Now using a LSTM/RNN model for phoneme recognition instead of the TMC-ViT, check
 The script processes the EMG data, normalizes it, segments it, generates training examples, and saves the resulting data for further use.
 
 ## Data Processing Results
+### Hyperparameter Choices
+| Hyperparameter | Value     |
+|----------------|-----------|
+| PHONEMES       | 'bviuo'   |
+| CHANNELS       | 4         |
+| SIZE           | 10        |
+| STEP           | 5         |
 
-```
-| Statistic                | Values    | Time (ms)   |
-|--------------------------|-----------|-------------|
-| Number of segments       | 53        |             |
-| Average segment length   | 292.53    | 1175.75     |
-| Minimum segment length   | 102       | 407.0       |
-| Maximum segment length   | 375       | 1495.0      |
+### Phoneme Recordings
+| Statistic                     | b         | v         | i         | u         | o         | total       |
+|-------------------------------|-----------|-----------|-----------|-----------|-----------|-----------|
+| Number of segments            | 9         | 11        | 11        | 11        | 9         | 53        |
+| Average segment length (values)| 211.11    | 333.36    | 311.00    | 297.00    | 295.36    | 292.53    |
+| Minimum segment length (values)| 102       | 304       | 241       | 237       | 266       | 102       |
+| Maximum segment length (values)| 303       | 375       | 362       | 321       | 326       | 375       |
+| Average segment length (ms)   | 844.33    | 1355.0    | 1252.0    | 1185.09   | 1182.09   | 1175.75   |
+| Minimum segment length (ms)   | 407.0     | 1216.0    | 962.0     | 938.0     | 1061.0    | 407.0     |
+| Maximum segment length (ms)   | 1208.0    | 1495.0    | 1444.0    | 1280.0    | 1301.0    | 1495.0    |
 
+### Training Example Generation
 | Training Data Info       | Length    |
 |--------------------------|-----------|
 | train_silence            | 649       |
@@ -93,11 +104,14 @@ The script processes the EMG data, normalizes it, segments it, generates trainin
 | train_u                  | 638       |
 | train_o                  | 635       |
 
+### Final Training Data
 | Data Shape               | Shape             |
 |--------------------------|-------------------|
 | X_train.shape            | (3676, 4, 10)     |
 | y_train.shape            | (3676,)           |
-```
+
+## Data Processing Analysis
+TBA
 
 ## LSTM_RNN.ipynb
 
@@ -130,19 +144,20 @@ The script processes the EMG data, normalizes it, segments it, generates trainin
 14. Choose 10 random examples from the test set and predict the phoneme using the trained model. Compare the actual and predicted phonemes for these examples.
 
 ## Machine Learning Results
-
-```
+### Train and Test Shapes
 | Data Shape               | Shape             |
 |--------------------------|-------------------|
 | X_train.shape            | (2940, 4, 10)     |
 | X_test.shape             | (736, 4, 10)      |
 
+### Phoneme Example Distribution
 | Set                   | _       | b      | v      | i      | u      | o      |
 |-----------------------|---------|--------|--------|--------|--------|--------|
 | Original set          | 649     | 367    | 718    | 669    | 638    | 635    |
 | Training set          | 496     | 301    | 575    | 544    | 523    | 501    |
 | Test set              | 153     | 66     | 143    | 125    | 115    | 134    |
 
+### Model Summary
 Model: "sequential"
 _________________________________________________________________
 | Layer (type)          | Output Shape      | Param #   |
@@ -158,15 +173,18 @@ Total params: 155,878
 Trainable params: 155,878
 Non-trainable params: 0
 
+### Evaluation Results on X_test
 | Evaluation Statistic     | Value             |
 |--------------------------|-------------------|
 | Test Example Count       | 736               |
 | Test Loss                | 0.015696810558    |
 | Test Accuracy            | 0.997282624244    |
-```
 
 ![Loss Graph](pictures/loss.png)
 
 ![Accuracy Graph](pictures/acc.png)
 
 ![Confusion Matrix](pictures/conf.png)
+
+## Machine Learning Analysis
+TBA
