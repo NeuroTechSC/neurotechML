@@ -157,10 +157,10 @@ _________________________________________________________________
 Total params: 155,878
 Trainable params: 155,878
 Non-trainable params: 0
+```
 
 ![Loss Graph](loss.png)
 
 ![Accuracy Graph](acc.png)
 
 ![Confusion Matrix](conf.png)
-```
