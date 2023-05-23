@@ -76,13 +76,28 @@ The script processes the EMG data, normalizes it, segments it, generates trainin
 
 ## Data Processing Results
 
-Number of segments: 53
-Average segment length: 292.53 values
-Minimum segment length: 102 values
-Maximum segment length: 375 values
-Average segment length (ms): 1175.75 ms
-Minimum segment length (ms): 407.0 ms
-Maximum segment length (ms): 1495.0 ms
+```
+| Statistic                | Values    | Time (ms)   |
+|--------------------------|-----------|-------------|
+| Number of segments       | 53        |             |
+| Average segment length   | 292.53    | 1175.75     |
+| Minimum segment length   | 102       | 407.0       |
+| Maximum segment length   | 375       | 1495.0      |
+
+| Training Data Info       | Length    |
+|--------------------------|-----------|
+| train_silence            | 649       |
+| train_b                  | 367       |
+| train_v                  | 718       |
+| train_i                  | 669       |
+| train_u                  | 638       |
+| train_o                  | 635       |
+
+| Data Shape               | Shape             |
+|--------------------------|-------------------|
+| X_train.shape            | (3676, 4, 10)     |
+| y_train.shape            | (3676,)           |
+```
 
 ## LSTM_RNN.ipynb
 
