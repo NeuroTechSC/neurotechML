@@ -14,7 +14,7 @@ The TMC-ViT model used in this repository is a novel deep learning architecture 
 
 ## Machine Learning Plan Amendment
 
-Now considering the use of a LSTM/RNN for phoneme recognition instead of the TMC-ViT, check `gtp_convos/gpt_convo_2.md` for more information.
+Now using a LSTM/RNN model for phoneme recognition instead of the TMC-ViT, check `gtp_convos/gpt_convo_2.md` for more information. Replaced `TMC-ViT.ipynb` with `LSTM_RNN.ipynb`.
 
 ## Project Timeline
 
@@ -23,12 +23,13 @@ Now considering the use of a LSTM/RNN for phoneme recognition instead of the TMC
 3. Finished preprocessing data
 4. Analyzed data and presented findings at the California Neurotech Conference on April 29th, 2023 (see Research Abstract section)
 5. Assessed model viability and are considering a pivot from TMC-ViT to an LSTM/RNN network
+6. Created training examples with various hyperparameters (see `data/`)
+7. Pivoted to LSTM/RNN architecture, achieved near 100% accuracy on test data with ~160,000 parameters (see `LSTM_RNN.ipynb`)
 
 ### Next Steps
 
-1. Collect data on more phonemes, possibly modify the Cyton OpenBCI board to support 8 muscle groups instead of 4
-2. Make a pivot to RNN/LSTM or another architecture
-3. Assess the viability of a second model to correct phoneme/letter-level errors
+1. Collect data on more phonemes, upgrade Cyton OpenBCI board to support 7 muscle groups instead of 4
+3. Assess the viability of a second model to correct phoneme/letter-level errors (phoneme list to word string model)
 4. Build a real-time transcription app
 
 ## File Descriptions
@@ -38,3 +39,80 @@ Now considering the use of a LSTM/RNN for phoneme recognition instead of the TMC
 - `gtp_convos/gpt_convo.md` - a discussion on processing .adc files and modifying TMC-ViT code
 - `gtp_convos/gpt_convo_2.md` - a discussion on using transformer and RNN architectures for subvocal phoneme prediction
 - `data/` - folder which contains the raw .csv files from the recordings, as well as formatted example/label .npy files
+
+## EMG_Data_Processing.ipynb
+
+1. Import the necessary libraries, such as numpy, pandas, matplotlib.pyplot, random, and os.
+
+2. Set hyperparameters for phonemes, channels, size, and step.
+
+3. Define a function plot_all_channels that takes a DataFrame and a title as inputs. It creates a figure with subplots for each channel.
+
+4. Load and preprocess the CSV data into a Pandas DataFrame, skipping the first few lines of metadata, and rename the columns by removing leading spaces.
+
+5. Plot the raw "EXG" channels using the plot_all_channels function.
+
+6. Normalize the data using Min-Max normalization, round "EXG Channel 4" values to 0 or 1, and create a new DataFrame df_normalized.
+
+7. Add a new column to the DataFrame for the rolling maximum of "EXG Channel 4" (initial window size of 90).
+
+8. Define plot_rolling_channel_4 and segment_stats functions for plotting the rolling maximum of "EXG Channel 4" with different ranges and calculating statistics about the segments.
+
+9. Identify the start and end indices of segments with 1s in the rolling maximum of "EXG Channel 4".
+
+10. Plot and analyze different segments of the data using the plot_rolling_channel_4 and segment_stats functions.
+
+11. Generate training examples for each phoneme, such as train_silence, train_b, train_v, train_i, train_u, and train_o, using the generate_training_examples function.
+
+12. Concatenate the training arrays, create the X_train array and print its shape.
+
+13. Generate training labels for each phoneme, such as y_train_silence, y_train_b, y_train_v, y_train_i, y_train_u, and y_train_o, using the np.full function.
+
+14. Concatenate the training labels and create the y_train array. Print its shape.
+
+15. Save the X_train and y_train arrays as NumPy files with an appropriate filename format.
+
+The script processes the EMG data, normalizes it, segments it, generates training examples, and saves the resulting data for further use.
+
+## Data Processing Results
+
+Number of segments: 53
+Average segment length: 292.53 values
+Minimum segment length: 102 values
+Maximum segment length: 375 values
+Average segment length (ms): 1175.75 ms
+Minimum segment length (ms): 407.0 ms
+Maximum segment length (ms): 1495.0 ms
+
+## LSTM_RNN.ipynb
+
+1. Import the required libraries and modules for data manipulation, machine learning and plotting (Numpy, TensorFlow, Keras, Scikit-learn, Matplotlib, Seaborn).
+
+2. Define the phonemes to be used for classification, and read the input data files (X_filename and y_filename) from the specified directory.
+
+3. Define and implement a function to parse the filename for retrieving the number of examples, channels, and size of input data.
+
+4. Load the training data (X_train_og, y_train_og) and split it into training (X_train, y_train) and test (X_test, y_test) datasets using Scikit-learn's train_test_split function.
+
+5. Prepare the data by re-shaping the input tensors to have size (N, CHANNELS, SIZE).
+
+6. Count the occurrences of each class in the original, training, and test sets; print the phoneme counts.
+
+7. Define a deep learning model with multiple layers (Conv1D, LSTM, Dense) using TensorFlow and Keras.
+
+8. Compile the model using the 'sparse_categorical_crossentropy' loss, 'adam' optimizer, and 'accuracy' metric.
+
+9. Define an Early Stopping callback to monitor the 'val_accuracy' with a patience value of 100.
+
+10. Train the model using the fit function with the training and validation data, batch size of 128, and up to 300 epochs (initially).
+
+11. Evaluate the model performance on the test set and print the test loss and accuracy scores.
+
+12. Plot the training and validation loss, and training and validation accuracy, over time (epochs).
+
+13. Display the confusion matrix using a heatmap, which compares the actual and predicted phonemes for the test dataset.
+
+14. Choose 10 random examples from the test set and predict the phoneme using the trained model. Compare the actual and predicted phonemes for these examples.
+
+## Machine Learning Results
+
