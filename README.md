@@ -181,10 +181,13 @@ Total params: 155,878
 | Test Loss                | 0.015696810558    |
 | Test Accuracy            | 0.997282624244    |
 
+### Loss Graph
 ![Loss Graph](pictures/loss.png)
 
+### Accuracy Graph
 ![Accuracy Graph](pictures/acc.png)
 
+### Confusion Matrix
 ![Confusion Matrix](pictures/conf.png)
 
 ## Machine Learning Analysis
