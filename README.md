@@ -159,8 +159,6 @@ Trainable params: 155,878
 Non-trainable params: 0
 ```
 
-![Loss Graph](pictures/loss.png)
-
-![Accuracy Graph](pictures/acc.png)
+![Loss Graph](pictures/loss.png) ![Accuracy Graph](pictures/acc.png)
 
 ![Confusion Matrix](pictures/conf.png)
