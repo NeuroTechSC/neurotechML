@@ -157,8 +157,16 @@ _________________________________________________________________
 Total params: 155,878
 Trainable params: 155,878
 Non-trainable params: 0
+
+| Evaluation Statistic     | Value             |
+|--------------------------|-------------------|
+| Test Example Count       | 736               |
+| Test Loss                | 0.015696810558    |
+| Test Accuracy            | 0.997282624244    |
 ```
 
-![Loss Graph](pictures/loss.png) ![Accuracy Graph](pictures/acc.png)
+![Loss Graph](pictures/loss.png)
+
+![Accuracy Graph](pictures/acc.png)
 
 ![Confusion Matrix](pictures/conf.png)
