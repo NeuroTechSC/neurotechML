@@ -74,7 +74,7 @@ Now using a LSTM/RNN model for phoneme recognition instead of the TMC-ViT, check
 
 The script processes the EMG data, normalizes it, segments it, generates training examples, and saves the resulting data for further use.
 
-## Data Processing Results
+## Data Processing Results and Analysis
 ### Hyperparameter Choices
 | Hyperparameter | Value     |
 |----------------|-----------|
@@ -82,6 +82,19 @@ The script processes the EMG data, normalizes it, segments it, generates trainin
 | CHANNELS       | 4         |
 | SIZE           | 10        |
 | STEP           | 5         |
+
+### Hyperparameter Methodology
+#### Phonemes
+There are 5 phonemes (and a silence class): /b, /v, /i, /u, /o, chosen for their EMG signal differences and muscle group activations.
+
+#### Channels
+There are 4 channels for 4 muscle groups: zygomaticus major (ZYG), orbicularis oris superior (OOS), orbicularis oris inferior (OOI), risorius	(RIS)
+
+#### Size and Step
+To make the most of the available data, we created datasets with varying sizes and steps. These ranged from larger size/step combinations (100, 100) to smaller ones (10, 5). In our analysis, we opted for the smaller size/step combination, as it provides the following benefits:
+
+1. **More training examples:** By breaking down the available data into smaller units, we can increase the number of training examples that are created from the same dataset.
+2. **Faster model response time:** Using smaller size/step datasets allows the ML model to have a quicker response time when it is integrated into a real-time application.  
 
 ### Phoneme Recordings
 | Statistic                     | b         | v         | i         | u         | o         | total       |
@@ -94,6 +107,10 @@ The script processes the EMG data, normalizes it, segments it, generates trainin
 | Minimum segment length (ms)   | 407.0     | 1216.0    | 962.0     | 938.0     | 1061.0    | 407.0     |
 | Maximum segment length (ms)   | 1208.0    | 1495.0    | 1444.0    | 1280.0    | 1301.0    | 1495.0    |
 
+### Data Issues
+
+The dataset contains only 53 recordings in total, which is not ideal for training a robust machine learning model. This limitation is particularly pronounced for the /b phoneme, which is represented by only 9 recordings. The reduced data quality is a result of issues during the data collection process.
+
 ### Training Example Generation
 | Class                    | Count     |
 |--------------------------|-----------|
@@ -104,27 +121,15 @@ The script processes the EMG data, normalizes it, segments it, generates trainin
 | train_u (4)                 | 638       |
 | train_o (5)                 | 635       |
 
+### Training Data Considerations
+
+It is important to note that the actual recordings included in the dataset are much longer than necessary for an effective ML model. However, by generating smaller training example segments, we can still derive useful insights and train a competent model.
+
 ### Final Training Data
 | Python Code              | Shape             |
 |--------------------------|-------------------|
 | X_train.shape            | (3676, 4, 10)     |
 | y_train.shape            | (3676,)           |
-
-## Data Processing Analysis
-### Overview
-
-The dataset contains only 53 recordings in total, which is not ideal for training a robust machine learning model. This limitation is particularly pronounced for the 'b' phoneme, which is represented by only 9 recordings. The reduced data quality is a result of issues during the data collection process.
-
-### Methodology
-
-To make the most of the available data, we created datasets with varying sizes and steps. These ranged from larger size/step combinations (100, 100) to smaller ones (10, 5). In our analysis, we opted for the smaller size/step combination, as it provides the following benefits:
-
-1. **More training examples:** By breaking down the available data into smaller units, we can increase the number of training examples that are created from the same dataset.
-2. **Faster model response time:** Using smaller size/step datasets allows the ML model to have a quicker response time when it is integrated into a real-time application.
-
-### Considerations
-
-It is important to note that the actual recordings included in the dataset are much longer than necessary for an effective ML model. However, by generating smaller training example segments, we can still derive useful insights and train a competent model.
 
 ### Conclusion
 
