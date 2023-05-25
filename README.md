@@ -24,7 +24,7 @@ Now using a LSTM/RNN model for phoneme recognition instead of the TMC-ViT, check
 4. Analyzed data and presented findings at the California Neurotech Conference on April 29th, 2023 (see Research Abstract section)
 5. Assessed model viability and are considering a pivot from TMC-ViT to an LSTM/RNN network
 6. Created training examples with various hyperparameters (see `data/`)
-7. Pivoted to LSTM/RNN architecture, achieved near 100% accuracy on test data with ~160,000 parameters (see `LSTM_RNN.ipynb`)
+7. Pivoted to LSTM/RNN architecture, achieved near 100% accuracy on test data with ~155,000 parameters (see `LSTM_RNN.ipynb`)
 
 ### Next Steps
 
