@@ -172,6 +172,10 @@ Despite the limitations in data quality and quantity, we have analyzed the avail
 | X_train.shape            | (2940, 4, 10)     |
 | X_test.shape             | (736, 4, 10)      |
 
+### Data Preparation
+
+We prepared the dataset using an 80/20 split, which resulted in an appropriate total count and phoneme distribution for both the training and test sets.
+
 ### Phoneme Example Distribution
 | Set                   | _       | b      | v      | i      | u      | o      |
 |-----------------------|---------|--------|--------|--------|--------|--------|
@@ -203,14 +207,23 @@ Total params: 155,878
 | Test Loss                | 0.015696810558    |
 | Test Accuracy            | 0.997282624244    |
 
+### Evaluation Conclusions
+
+These results demonstrate that the model effectively recognizes phonemes with high accuracy while exhibiting low loss levels. Unfortunately, we don't have much data, so this could be overfitting and/or not scaleable to further phonemes. Current model training reaches 95%+ accuracy quite quickly, with more phonemes, larger model size could help scale with amount of classes. Could add dropout layers to combat overfitting.
+
 ### Loss Graph
 ![Loss Graph](pictures/loss.png)
 
 ### Accuracy Graph
 ![Accuracy Graph](pictures/acc.png)
 
+### Graph Evaluation
+
+Graphs have some spikes in loss/accuracy, but overall seem stable and normal.
+
 ### Confusion Matrix
 ![Confusion Matrix](pictures/conf.png)
 
-## Machine Learning Analysis
-TBA
+### Confusion Matrix Evaluation
+
+Only 2 phonemes wrong in entire test set, promising results. Both involve silence/b, so bad quality in recordings of /b likely caused these errors.
