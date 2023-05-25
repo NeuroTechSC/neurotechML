@@ -86,7 +86,7 @@ The script processes the EMG data, normalizes it, segments it, generates trainin
 ### Phoneme Recordings
 | Statistic                     | b         | v         | i         | u         | o         | total       |
 |-------------------------------|-----------|-----------|-----------|-----------|-----------|-----------|
-| Number of segments            | 9         | 11        | 11        | 11        | 9         | 53        |
+| Number of segments            | 9         | 11        | 11        | 11        | 11         | 53        |
 | Average segment length (values)| 211.11    | 333.36    | 311.00    | 297.00    | 295.36    | 292.53    |
 | Minimum segment length (values)| 102       | 304       | 241       | 237       | 266       | 102       |
 | Maximum segment length (values)| 303       | 375       | 362       | 321       | 326       | 375       |
