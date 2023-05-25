@@ -111,7 +111,25 @@ The script processes the EMG data, normalizes it, segments it, generates trainin
 | y_train.shape            | (3676,)           |
 
 ## Data Processing Analysis
-TBA
+
+### Overview
+
+The dataset contains only 53 recordings in total, which is not ideal for training a robust machine learning model. This limitation is particularly pronounced for the 'b' phoneme, which is represented by only 9 recordings. The reduced data quality is a result of issues during the data collection process.
+
+### Methodology
+
+To make the most of the available data, we created datasets with varying sizes and steps. These ranged from larger size/step combinations (100, 100) to smaller ones (10, 5). In our analysis, we opted for the smaller size/step combination, as it provides the following benefits:
+
+1. **More training examples:** By breaking down the available data into smaller units, we can increase the number of training examples that are created from the same dataset.
+2. **Faster model response time:** Using smaller size/step datasets allows the ML model to have a quicker response time when it is integrated into a real-time application.
+
+### Considerations
+
+It is important to note that the actual recordings included in the dataset are much longer than necessary for an effective ML model. However, by generating smaller training example segments, we can still derive useful insights and train a competent model.
+
+### Conclusion
+
+Despite the limitations in data quality and quantity, we have analyzed the available phoneme recordings and optimized the data processing approach to create a useful dataset for machine learning applications. This analysis will guide the development of a model that provides sufficient performance, given the constraints of the data.
 
 ## LSTM_RNN.ipynb
 
