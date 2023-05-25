@@ -111,7 +111,6 @@ The script processes the EMG data, normalizes it, segments it, generates trainin
 | y_train.shape            | (3676,)           |
 
 ## Data Processing Analysis
-
 ### Overview
 
 The dataset contains only 53 recordings in total, which is not ideal for training a robust machine learning model. This limitation is particularly pronounced for the 'b' phoneme, which is represented by only 9 recordings. The reduced data quality is a result of issues during the data collection process.
