@@ -2,21 +2,33 @@
 
 This is the Git repository for the Machine Learning team of the NeuroTechSC organization. The main goal of our project is to detect subvocal phonemes from surface Electromyography (sEMG) data using a Deep Neural Network model implemented in Python. This repository provides the Python notebooks for the sEMG data preprocessing and various model trainings.
 
-## General Research Abstract for Project
+## Contents
+
+- [General Research Abstract for Project](#research-abstract)
+- [Machine Learning Plan Overview](#ml-plan-overview)
+- [Machine Learning Plan Amendment](#ml-plan-amendment)
+- [Project Timeline](#project-timeline)
+- [File Descriptions](#file-descriptions)
+- [EMG Data Processing](#emg-data-processing)
+- [Data Processing Results and Analysis](#data-processing-results)
+- [LSTM RNN Model](#lstm-rnn-model)
+- [Machine Learning Results](#machine-learning-results)
+
+## <a id="research-abstract" style="color: inherit; text-decoration: none;">General Research Abstract for Project</a>
 
 Subvocalization refers to the internal speech that occurs while reading or thinking without producing any audible sound. It is accompanied by the activation of the muscles involved in speech production, generating electrical signals known as electromyograms (EMGs). These signals can potentially be used for silent communication and assistive technologies, improving the lives of people with speech impairments and enabling new forms of human-computer interaction. However, the accurate recognition of subvocal EMGs remains a challenge due to the variability in signal patterns and electrode placement. Our proposed solution is to develop an advanced subvocal EMG recognition system using machine learning techniques. By analyzing the EMG signals, our system will be able to identify the intended speech content and convert it into text. This technology will be applicable in various fields, including silent communication for military or emergency personnel, assistive devices for people with speech impairments, and hands-free control of computers and other electronic devices.
 
-## Machine Learning Plan Overview (Original)
+## <a id="ml-plan-overview" style="color: inherit; text-decoration: none;">Machine Learning Plan Overview (Original)</a>
 
 This project aims to improve the performance of subvocal phoneme detection using machine learning techniques. Subvocal phonemes are the speech components generated when a person talks to themselves without producing any sound. Detecting these phonemes has various applications, including silent communication devices and assistive technologies for individuals with speech impairments.
 
 The TMC-ViT model used in this repository is a novel deep learning architecture that leverages the benefits of vision transformers and temporal multi-channel features to achieve improved performance on sEMG data. This model outperforms conventional methods such as CNNs and LSTMs in subvocal phoneme detection tasks. 
 
-## Machine Learning Plan Amendment
+## <a id="ml-plan-amendment" style="color: inherit; text-decoration: none;">Machine Learning Plan Amendment</a>
 
 Now using a LSTM/RNN model for phoneme recognition instead of the TMC-ViT, check `gtp_convos/gpt_convo_2.md` for more information. Replaced `TMC-ViT.ipynb` with `LSTM_RNN.ipynb`.
 
-## Project Timeline
+## <a id="project-timeline" style="color: inherit; text-decoration: none;">Project Timeline</a>
 
 1. Came up with a design plan and chose model architecture (TMC-ViT)
 2. Collected data for 5 phonemes
@@ -32,7 +44,7 @@ Now using a LSTM/RNN model for phoneme recognition instead of the TMC-ViT, check
 3. Assess the viability of a second model to correct phoneme/letter-level errors (phoneme list to word string model)
 4. Build a real-time transcription app
 
-## File Descriptions
+## <a id="file-descriptions" style="color: inherit; text-decoration: none;">File Descriptions</a>
 
 - `LSTM_RNN.ipynb` - a model that reached ~100% test accuracy on our 5 phonemes, has training code + visualization
 - `EMG_Data_Processing.ipynb` - preprocessing script that cleans the data and formats it into training examples
@@ -40,7 +52,7 @@ Now using a LSTM/RNN model for phoneme recognition instead of the TMC-ViT, check
 - `gtp_convos/gpt_convo_2.md` - a discussion on using transformer and RNN architectures for subvocal phoneme prediction
 - `data/` - folder which contains the raw .csv files from the recordings, as well as formatted example/label .npy files
 
-## EMG_Data_Processing.ipynb
+## <a id="emg-data-processing" style="color: inherit; text-decoration: none;">EMG Data Processing</a>
 
 1. Import the necessary libraries, such as numpy, pandas, matplotlib.pyplot, random, and os.
 
@@ -74,7 +86,7 @@ Now using a LSTM/RNN model for phoneme recognition instead of the TMC-ViT, check
 
 The script processes the EMG data, normalizes it, segments it, generates training examples, and saves the resulting data for further use.
 
-## Data Processing Results and Analysis
+## <a id="data-processing-results" style="color: inherit; text-decoration: none;">Data Processing Results and Analysis</a>
 ### Hyperparameter Choices
 | Hyperparameter | Value     |
 |----------------|-----------|
@@ -135,7 +147,7 @@ It is important to note that the actual recordings included in the dataset are m
 
 Despite the limitations in data quality and quantity, we have analyzed the available phoneme recordings and optimized the data processing approach to create a useful dataset for machine learning applications. This analysis will guide the development of a model that provides sufficient performance, given the constraints of the data.
 
-## LSTM_RNN.ipynb
+## <a id="lstm-rnn-model" style="color: inherit; text-decoration: none;">LSTM RNN Model</a>
 
 1. Import the required libraries and modules for data manipulation, machine learning and plotting (Numpy, TensorFlow, Keras, Scikit-learn, Matplotlib, Seaborn).
 
@@ -165,7 +177,7 @@ Despite the limitations in data quality and quantity, we have analyzed the avail
 
 14. Choose 10 random examples from the test set and predict the phoneme using the trained model. Compare the actual and predicted phonemes for these examples.
 
-## Machine Learning Results
+## <a id="machine-learning-results" style="color: inherit; text-decoration: none;">Machine Learning Results</a>
 ### Train and Test Shapes
 | Python Code              | Shape             |
 |--------------------------|-------------------|
