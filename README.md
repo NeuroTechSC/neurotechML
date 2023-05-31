@@ -1,6 +1,6 @@
 # NeuroTechSC - Machine Learning
 
-This is the Git repository for the Machine Learning team of the NeuroTechSC organization. The main goal of our project is to detect subvocal phonemes from surface Electromyography (sEMG) data using a Deep Neural Network model implemented in Python. This repository provides the Python notebooks for the sEMG data preprocessing and various model trainings.
+This is the Git repository for the Machine Learning team of the NeuroTechSC organization. The main goal of our project is to detect (subvocal) phonemes from surface Electromyography (sEMG) data using a Deep Neural Network model implemented in Python. This repository provides the Python notebooks for the sEMG data preprocessing and various model trainings.
 
 ## <u>Contents</u>
 
@@ -22,6 +22,8 @@ Subvocalization refers to the internal speech that occurs while reading or think
 This project aims to improve the performance of subvocal phoneme detection using machine learning techniques. Subvocal phonemes are the speech components generated when a person talks to themselves without producing any sound. Detecting these phonemes has various applications, including silent communication devices and assistive technologies for individuals with speech impairments.
 
 The TMC-ViT model used in this repository is a novel deep learning architecture that leverages the benefits of vision transformers and temporal multi-channel features to achieve improved performance on sEMG data. This model outperforms conventional methods such as CNNs and LSTMs in subvocal phoneme detection tasks. 
+
+We will first train our model on data where the phonemes are audible and voiced, then transition to whispered, and eventually we hope to be able to detect subvocal speech (like in reading or intense thought).
 
 ### **Machine Learning Plan Amendment 1**
 
@@ -49,6 +51,7 @@ Expanded from initial five phonemes `bviou` to a diverse set of 22. Improved dat
 2. Re-record first 22 phonemes with any additional channels/muscle groups
 3. Assess the viability of a second model to correct phoneme/letter-level errors (phoneme list to word string model?)
 4. Build a real-time transcription app
+5. Upgrade model to whispered/subvocal phoneme recognition.
 
 ## <a id="file-descriptions" style="color: inherit; text-decoration: none;"><u>File Descriptions</u></a>
 
