@@ -82,10 +82,10 @@ Expanded from initial five phonemes `bviou` to a diverse set of 22. Improved dat
 5. Plot Raw EMG Channels
     - Plot raw EMG channels using the `plot_all_channels` function.
 
-6. Data Normalization and Outliers Removal
+6. Outliers Removal and Data Normalization
+    - Remove outliers by replacing them with the mean of surrounding values.
     - Normalize the data using Min-Max normalization and round the values to 0 or 1.
     - Create a new DataFrame `df_normalized`.
-    - Remove outliers by replacing them with the mean of surrounding values.
 
 7. Define `plot_rolling_channel_4` and `segment_stats` Functions
     - Create functions for plotting the rolling maximum of EXG Channel 4 with different ranges and for calculating statistics about the segments.
