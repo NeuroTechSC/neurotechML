@@ -11,7 +11,7 @@ This is the Git repository for the Machine Learning team of the NeuroTechSC orga
 - [EMG Data Processing](#emg-data-processing)
 - [Data Processing Results and Analysis](#data-processing-results)
 - [Machine Learning - LSTM RNN Model](#lstm-rnn-model)
-- [Machine Learning Results](#machine-learning-results)
+- [Machine Learning Results and Analysis](#machine-learning-results)
 
 ## <a id="research-abstract" style="color: inherit; text-decoration: none;"><u>General Research Abstract for Project</u></a>
 
@@ -213,7 +213,7 @@ We have processed and analyzed the dataset of 22 phonemes, highlighting their va
 11. Test Model on Random Examples
     - Choose random examples from the test set and display their actual and predicted phonemes.
 
-## <a id="machine-learning-results" style="color: inherit; text-decoration: none;"><u>Machine Learning Results</u></a>
+## <a id="machine-learning-results" style="color: inherit; text-decoration: none;"><u>Machine Learning Results and Analysis</u></a>
 ### **Train and Test Shapes**
 | Python Code              | Shape             |
 |--------------------------|-------------------|
