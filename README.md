@@ -58,7 +58,8 @@ Expanded from initial five phonemes `bviou` to a diverse set of 22. Improved dat
 - `LSTM_RNN_first_22.ipynb` - a model that reached ~97% test accuracy on 22 diverse phonemes, has training code + visualization
 - `EMG_Data_Processing_first_22.ipynb` - preprocessing script that cleans the data and formats it into training examples
 - `Project_Methods.png` - image showing history of recording sessions 
-- `data/` - folder which contains the raw .csv files from the recordings, as well as formatted example/label .npy files
+- `models/` - folder which contains saved models, not just weights
+- `data/` - folder which contains the raw .csv files from the recordings, as well as formatted training example/label .npy files
 - `archive/` - folder which contains old model training and data processing notebooks
 - `pictures/` - folder which contains pictures for the README.md
 - `gtp_convos/` - discussions with GPT-4 about the project
