@@ -176,7 +176,7 @@ The dataset contains only 231 recordings in total, which is not ideal for traini
 
 ### **Conclusion**
 
-We have processed and analyzed the dataset of 22 phonemes, highlighting their various articulatory features and EMG signal differences. Despite the limitations in data quality and quantity, the analysis and data processing approach enable us to create a dataset suitable for machine learning applications.
+We have processed and analyzed our data of the selected 22 phonemes, gaining insight into the recording sessions and informing future decisions. Despite the limitations in data quality and quantity, the analysis and data processing approach enabled us to create a dataset suitable for a machine learning model.
 
 ## <a id="lstm-rnn-model" style="color: inherit; text-decoration: none;"><u>Machine Learning - LSTM RNN Model</u></a>
 
