@@ -43,7 +43,7 @@ Expanded from initial five phonemes `bviou` to a diverse set of 22. Improved dat
 6. Created training examples with various hyperparameters (see `data/`)
 7. Pivoted to LSTM/RNN architecture, achieved near 100% accuracy on test data with ~155,000 parameters (see `archive/LSTM_RNN_bviou.ipynb`)
 8. Expanded from initial five phonemes `bviou` to a diverse set of 22, attempted recording with 7 channels/muscle groups (attempt failed, only 3 usable channels)
-9. Processed data and modified model hyperparameters to scale to more classes, achieved ~97% accuracy on test data with ~836,000 parameters (see `LSTM_RNN_first_22.ipynb`)
+9. Processed data and modified model hyperparameters to scale to more classes, achieved ~99% accuracy on test data with ~836,000 parameters (see `LSTM_RNN_first_22.ipynb`)
 
 ### **Next Steps**
 
@@ -55,7 +55,7 @@ Expanded from initial five phonemes `bviou` to a diverse set of 22. Improved dat
 
 ## <a id="file-descriptions" style="color: inherit; text-decoration: none;"><u>File Descriptions</u></a>
 
-- `LSTM_RNN_first_22.ipynb` - a model that reached ~97% test accuracy on 22 diverse phonemes, has training code + visualization
+- `LSTM_RNN_first_22.ipynb` - a model that reached ~99% test accuracy on 22 diverse phonemes, has training code + visualization
 - `EMG_Data_Processing_first_22.ipynb` - preprocessing script that cleans the data and formats it into training examples
 - `Project_Methods.png` - image showing history of recording sessions 
 - `models/` - folder which contains saved models, not just weights
@@ -253,8 +253,8 @@ Total params: 837,783
 | Evaluation Statistic        | Value                           |
 |-----------------------------|---------------------------------|
 | Test Example Count          | 449                             |
-| Test Loss                   | 0.18518821895122528             |
-| Test Accuracy               | 0.9710467457771301 (436/449)    |
+| Test Loss                   | 0.12511923909187317             |
+| Test Accuracy               | 0.9910913109779358 (445/449)    |
 
 ### **Evaluation Conclusions**
 
