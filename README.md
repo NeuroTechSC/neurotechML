@@ -224,9 +224,9 @@ We have processed and analyzed our data of the selected 22 phonemes, gaining ins
 | X_train.shape            | (1793, 3, 10)     |
 | X_test.shape             | (449, 3, 10)      |
 
-### **Data Preparation**
+### **Data Preparation and Considerations**
 
-We prepared the dataset using an 80/20 split, which resulted in an appropriate total count and phoneme distribution for both the training and test sets.
+We prepared the dataset using an 80/20 split, which resulted in an appropriate total count and phoneme distribution for both the training and test sets. It is important to take into consideration the fact that using a sliding window teachnique has generated training examples that may be adjacent and/or from the same phoneme recording that end up in both the training and test set, which could lead to data leakage. The choice of parameters, 10 and 10 (40 ms), was intentional, in order to have zero overalap while also creating enough training examples that could be used to make a real-time transcription model.
 
 ### **Model Summary**
 Model: "sequential_6"  
@@ -257,7 +257,7 @@ Total params: 837,783
 
 ### **Evaluation Conclusions**
 
-These results demonstrate that the model effectively recognizes phonemes with high accuracy while exhibiting low loss levels. However, the model might be overfitting considering the limited data and quick achievement of 95%+ accuracy. For more phonemes, a larger model size could help scale the number of classes, and adding dropout layers may combat overfitting.
+These results demonstrate that the model effectively recognizes phonemes with high accuracy while exhibiting low loss levels. However, the model might be overfitting considering the limited data and quick achievement of 95%+ accuracy. For more phonemes, a larger model size could help scale the number of classes, or a change in hyperparameters, algorithms, or layers.
 
 ### **Loss Graph**
 ![Loss Graph](pictures/loss.png)
@@ -267,7 +267,7 @@ These results demonstrate that the model effectively recognizes phonemes with hi
 
 ### **Graph Evaluation**
 
-The graphs demonstrate some spikes in loss/accuracy but overall seem stable and normal.
+The graphs demonstrate some spikes in loss/accuracy but overall seem stable and normal. Something very strange is that the validation loss is lower than training loss, and therefore validation accuracy is higher than training accuracy, which isn't a bad thing, but we must perform more experiments to determine the cause. 
 
 ### **Confusion Matrix**
 ![Confusion Matrix](pictures/conf.png)
