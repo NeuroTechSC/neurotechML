@@ -114,10 +114,10 @@ Expanded from initial five phonemes `bviou` to a diverse set of 22. Improved dat
 
 ### **Hyperparameter Methodology**
 #### **Phonemes**
-There are 22 phonemes (and a silence class), chosen for their EMG signal differences and muscle group activations.
+There are 22 phonemes (and a silence class), chosen (using GPT-4) for their EMG signal differences and muscle group activations.
 
 #### **Channels**
-There are 3 channels for 3 muscle groups: depressor labii inferioris (DLI), orbicularis oris superior (OOS), and orbicularis oris inferior (OOI). Attempt at recording with 7 channels failed, recorded with 4, had to get rid of the zygomaticus major (ZYG) channel because of electorode connection problems. (Less channels than for 5 phoneme model)
+There are 3 channels for 3 muscle groups: depressor labii inferioris (DLI), orbicularis oris superior (OOS), and orbicularis oris inferior (OOI). Attempt at recording with 7 channels failed (see `Project_Methods.png`), recorded with 4, but had to get rid of the zygomaticus major (ZYG) channel because of electorode connection problems. (Less channels than for 5 phoneme model)
 
 #### **Window Size and Step Size**
 To make the most of the available data, we experimented with creating datasets with various values of window size and step size, ranging from 10-50 and 1-50 respectively. We settled on 10 and 10 (meaning 40ms windows with no overlap), as this combination provides the following benefits:
@@ -138,7 +138,7 @@ To make the most of the available data, we experimented with creating datasets w
 
 ### **Data Issues**
 
-The dataset contains only 231 recordings in total, which is not ideal for training a robust machine learning model, and the distribution of phoneme training examples is not uniform, some phonemes have more representation than others. This limitation is a result of issues during the data collection process. It is important to note that the actual recordings included in the dataset are much longer than necessary for an effective ML model. However, with the chosen window size and step size, we can create more training examples to train a better and more robust model.
+The dataset contains only 231 recordings in total, which is not ideal for training a robust machine learning model, and the distribution of phoneme training examples is not uniform, some phonemes have more representation than others. This limitation is a result of issues during the data collection process. It is important to note that the actual recordings included in the dataset are longer than necessary for an effective ML model. However, with the chosen window size and step size, we can create more training examples to train a better, more reactive and robust model.
 
 ### **Training Example Generation**
 | Phoneme       | Examples   |
