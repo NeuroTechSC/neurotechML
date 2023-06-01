@@ -62,6 +62,7 @@ Expanded from initial five phonemes `bviou` to a diverse set of 22. Improved dat
 - `archive/` - folder which contains old model training and data processing notebooks
 - `pictures/` - folder which contains pictures for the README.md
 - `gtp_convos/` - discussions with GPT-4 about the project
+- `git_push_script.bat` - batch script to quickly push all changes to the repository with a commit message
 
 ## <a id="emg-data-processing" style="color: inherit; text-decoration: none;"><u>EMG Data Processing</u></a>
 
