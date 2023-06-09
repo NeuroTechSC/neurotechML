@@ -25,13 +25,17 @@ The TMC-ViT model used in this repository is a novel deep learning architecture 
 
 We will first train our model on data where the phonemes are audible and voiced, then transition to whispered, and eventually we hope to be able to detect subvocal speech (like in reading or intense thought).
 
-### **Machine Learning Plan Amendment 1**
+### **Machine Learning Update I**
 
 Now using a LSTM/RNN model for phoneme recognition instead of the TMC-ViT, check `gtp_convos/gpt_convo_2.md` for more information. Replaced `TMC-ViT.ipynb` with `LSTM_RNN_bviou.ipynb`.
 
-### **Machine Learning Update**
+### **Machine Learning Update II**
 
 Expanded from initial five phonemes `bviou` to a diverse set of 22. Improved data processing and precision, increased model size and robustness, and added guards against overfitting.
+
+### **Machine Learning Update III**
+
+Recorded complementary set of phonemes (last 22), changed muscle groups, greatly improved data quality! Accounted for more robust/diverse silence/rest class in processing, upped model parameter count, got great performance. Added model performance analysis section to data processing notebook (see `LSTM_RNN_last_22.ipynb`).
 
 ## <a id="project-timeline" style="color: inherit; text-decoration: none;"><u>Project Timeline</u></a>
 
@@ -44,235 +48,31 @@ Expanded from initial five phonemes `bviou` to a diverse set of 22. Improved dat
 7. Pivoted to LSTM/RNN architecture, achieved near 100% accuracy on test data with ~155,000 parameters (see `archive/LSTM_RNN_bviou.ipynb`)
 8. Expanded from initial five phonemes `bviou` to a diverse set of 22, attempted recording with 7 channels/muscle groups (attempt failed, only 3 usable channels)
 9. Processed data and modified model hyperparameters to scale to more classes, achieved ~99% accuracy on test data with ~836,000 parameters (see `LSTM_RNN_first_22.ipynb`)
+10. Collected data for remaining 22 phonemes, used 4 new muscle groups/channels, quality recordings got processed into super clean data
+11. Trained model which achieved ~98.3% accuracy on test data with 1,373,591 parameters (see `LSTM_RNN_last_22.ipynb`)
+12. Added section to data processing notebook which tests model on entire original recording (see `EMG_Data_Processing_last_22.ipynb`)
 
 ### **Next Steps**
-
-1. Collect data for remaining 22 phonemes, using 3 or more channels/muscle groups
-2. Re-record first 22 phonemes with any additional channels/muscle groups
-3. Assess the viability of a second model to correct phoneme/letter-level errors (phoneme list to word string model?)
-4. Build a real-time transcription app
-5. Upgrade model to whispered/subvocal phoneme recognition.
+1. Re-record first 22 phonemes with new muscle groups
+2. Assess the viability of a second model to correct phoneme/letter-level errors (phoneme list to word string model?)
+3. Build a real-time transcription app
+4. Upgrade model to whispered/subvocal phoneme recognition.
 
 ## <a id="file-descriptions" style="color: inherit; text-decoration: none;"><u>File Descriptions</u></a>
 
+- `EMG_Data_Processing_first_22.ipynb` - preprocessing script that cleans the data for the first 22 phonemes and formats it into training examples
+- `EMG_Data_Processing_last_22.ipynb` - preprocessing script that cleans the data for the last 22 phonemes and formats it into training examples
 - `LSTM_RNN_first_22.ipynb` - a model that reached ~99% test accuracy on 22 diverse phonemes, has training code + visualization
-- `EMG_Data_Processing_first_22.ipynb` - preprocessing script that cleans the data and formats it into training examples
+- `LSTM_RNN_last_22.ipynb` - a model that reached ~98.3% test accuracy on the other set of 22 diverse phonemes and a silence/rest class, has training code + visualization
 - `Project_Methods.png` - image showing history of recording sessions 
-- `models/` - folder which contains saved models, not just weights
-- `data/` - folder which contains the raw .csv files from the recordings, as well as formatted training example/label .npy files
-- `archive/` - folder which contains old model training and data processing notebooks
-- `pictures/` - folder which contains pictures for the README.md
-- `gtp_convos/` - discussions with GPT-4 about the project
 - `git_push_script.bat` - batch script to quickly push all changes to the repository with a commit message
+- `archive/` - folder which contains old model training and data processing notebooks
+- `data/` - folder which contains the raw .csv files from the recordings, as well as formatted training example/label .npy files
+- `gtp_convos/` - discussions with GPT-4 about the project
+- `models/` - folder which contains saved models, not just weights
+- `pictures/` - folder which contains pictures for the README.md
+- `reports/` - folder which contains reports on Python notebooks, markdown reports of data processing and machine learning results and analysis
 
-## <a id="emg-data-processing" style="color: inherit; text-decoration: none;"><u>EMG Data Processing</u></a>
+## <a id="file-descriptions" style="color: inherit; text-decoration: none;"><u>Results</u></a>
 
-1. Import Libraries
-    - Import necessary libraries for data processing and visualization (numpy, pandas, matplotlib).
-
-2. Set Hyperparameters
-    - Define the hyperparameters of the dataset, including phonemes, channels, window size, and step size.
-
-3. Define `plot_all_channels` function
-    - Create a function that takes a DataFrame and title as inputs and plots a figure with subplots for each channel.
-
-4. Load and Preprocess Data
-    - Load the CSV data into a Pandas DataFrame.
-    - Filter out unnecessary columns and assign new column names.
-    - Remove the first 4000 rows due to bad data.
-
-5. Plot Raw EMG Channels
-    - Plot raw EMG channels using the `plot_all_channels` function.
-
-6. Outliers Removal and Data Normalization
-    - Remove outliers by replacing them with the mean of surrounding values.
-    - Normalize the data using Min-Max normalization and round the values to 0 or 1.
-    - Create a new DataFrame `df_normalized`.
-
-7. Define `plot_rolling_channel_4` and `segment_stats` Functions
-    - Create functions for plotting the rolling maximum of EXG Channel 4 with different ranges and for calculating statistics about the segments.
-
-8. Add Rolling Max Column
-    - Add a new column for the rolling maximum of EXG Channel 4 with a specific window size.
-
-9. Identify Segments
-    - Identify the start and end indices of segments with 1s in the rolling maximum of EXG Channel 4.
-    - Get segments that need to be zeroed and filter out small segments.
-
-10. Clean Recordings and Group Segments
-    - Define functions to clean the data, group the segments, and create a dictionary with separated phonemes.
-
-11. Generate Training Examples and Labels
-    - Create functions to generate training examples and labels, concatenate them into arrays, and save them as numpy files.
-
-## <a id="data-processing-results" style="color: inherit; text-decoration: none;"><u>Data Processing Results and Analysis</u></a>
-### **Hyperparameter Choices**
-| Hyperparameter | Value     |
-|----------------|-----------|
-| PHONEMES       | /_, /p, /b, /t, /d, /k, /g, /f, /v, /s, /z, /m, /i, /ē, /e, /a, /u, /oo, /ū, /a(r), /ā, /ī, /oy |
-| CHANNELS       | 3         |
-| WINDOW_SIZE    | 10        |
-| STEP_SIZE      | 10         |
-
-### **Hyperparameter Methodology**
-#### **Phonemes**
-There are 22 phonemes (and a silence class), chosen (using GPT-4) for their EMG signal differences and muscle group activations.
-
-#### **Channels**
-There are 3 channels for 3 muscle groups: depressor labii inferioris (DLI), orbicularis oris superior (OOS), and orbicularis oris inferior (OOI). Attempt at recording with 7 channels failed (see `Project_Methods.png`), recorded with 4, but had to get rid of the zygomaticus major (ZYG) channel because of electorode connection problems. (Less channels than for 5 phoneme model)
-
-#### **Window Size and Step Size**
-To make the most of the available data, we experimented with creating datasets with various values of window size and step size, ranging from 10-50 and 1-50 respectively. We settled on 10 and 10 (meaning 40ms windows with no overlap), as this combination provides the following benefits:
-
-1. **More training examples:** By breaking down the available data into smaller units, we can increase the number of training examples that are created from the same dataset.
-2. **Faster model response time:** Using smaller window size and step size datasets allows the ML model to have a quicker response time when it is integrated into a real-time application.
-
-### **Phoneme Recordings**
-| Statistic                     | Value    |
-|-------------------------------|-----------|
-| Number of segments            | 231      |
-| Average segment length (values)| 97.2     |
-| Minimum segment length (values)| 50       |
-| Maximum segment length (values)| 207      |
-| Average segment length (ms)   | 388.81   |
-| Minimum segment length (ms)   | 200      |
-| Maximum segment length (ms)   | 828      |
-
-### **Data Issues**
-
-The dataset contains only 231 recordings in total, which is not ideal for training a robust machine learning model, and the distribution of phoneme training examples is not uniform, some phonemes have more representation than others. This limitation is a result of issues during the data collection process. It is important to note that the actual recordings included in the dataset are longer than necessary for an effective ML model. However, with the chosen window size and step size, we can create more training examples to train a better, more reactive and robust model.
-
-### **Training Example Generation**
-| Phoneme       | Examples   |
-|---------------|------------|
-| silence       | 100        |
-| p             | 148        |
-| b             | 64         |
-| t             | 94         |
-| d             | 80         |
-| k             | 69         |
-| g             | 95         |
-| f             | 85         |
-| v             | 90         |
-| s             | 91         |
-| z             | 114        |
-| m             | 122        |
-| i             | 91         |
-| ē             | 103        |
-| e             | 90         |
-| a             | 102        |
-| u             | 104        |
-| oo            | 119        |
-| ū             | 82         |
-| a(r)          | 97         |
-| ā             | 81         |
-| ī             | 99         |
-| oy            | 122        |
-
-### **Final Training Data**
-| Python Code              | Shape                 |
-|--------------------------|-----------------------|
-| X_train.shape            | (2242, 3, 10)         |
-| y_train.shape            | (2242,)               |
-
-### **Conclusion**
-
-We have processed and analyzed our data of the selected 22 phonemes, gaining insight into the recording sessions and informing future decisions. Despite the limitations in data quality and quantity, the analysis and data processing approach enabled us to create a dataset suitable for a machine learning model.
-
-## <a id="lstm-rnn-model" style="color: inherit; text-decoration: none;"><u>Machine Learning - LSTM RNN Model</u></a>
-
-1. Import Libraries
-    - Import necessary libraries for data processing, model building, and visualization (os, re, random, numpy, tensorflow, keras, scikit-learn, matplotlib, seaborn).
-
-2. Set Hyperparameters
-    - Define the hyperparameters of the dataset, including phonemes and classes.
-
-3. Define `get_files_with_prefix` function
-    - Create a function that takes a directory and prefix as inputs and returns a list of files with the specified prefix.
-
-4. Load and Preprocess Data
-    - Load the training data and parse the filenames.
-    - Split the data into training and testing sets.
-    - Prepare the data for input into the model.
-
-5. Define the Model
-    - Create a sequential model using various layers such as Conv1D, Dropout, LSTM, and Dense.
-    - Compile the model with loss, optimizer, and metrics.
-
-6. Define Early Stopping callback
-    - Define an EarlyStopping callback function to prevent overfitting.
-
-7. Train the Model
-    - Fit the model on the training data and validate it on the testing data using the early stopping callback.
-
-8. Evaluate the Model
-    - Evaluate the final model on the testing set and display the test accuracy.
-
-9. Plotting Training and Validation Loss and Accuracy
-    - Create plots for training and validation loss, as well as training and validation accuracy.
-
-10. Calculate and Display Confusion Matrix
-    - Get the predicted classes for the entire test set.
-    - Create and display the confusion matrix using a heatmap.
-
-11. Test Model on Random Examples
-    - Choose random examples from the test set and display their actual and predicted phonemes.
-
-## <a id="machine-learning-results" style="color: inherit; text-decoration: none;"><u>Machine Learning Results and Analysis</u></a>
-### **Train and Test Shapes**
-| Python Code              | Shape             |
-|--------------------------|-------------------|
-| X_train.shape            | (1793, 3, 10)     |
-| X_test.shape             | (449, 3, 10)      |
-
-### **Data Preparation and Considerations**
-
-We prepared the dataset using an 80/20 split, which resulted in an appropriate total count and phoneme distribution for both the training and test sets. It is important to take into consideration the fact that using a sliding window teachnique has generated training examples that may be adjacent and/or from the same phoneme recording that end up in both the training and test set, which could lead to data leakage. The choice of parameters, 10 and 10 (40 ms), was intentional, in order to have zero overalap while also creating enough training examples that could be used to make a real-time transcription model.
-
-### **Model Summary**
-Model: "sequential_6"  
-Total params: 837,783
-| Layer (type)                | Output Shape       | Param Count   |
-|-----------------------------|--------------------|---------------|
-| conv1d_12 (Conv1D)          | (None, 3, 128)     | 3968          |
-| batch_normalization_8       | (None, 3, 128)     | 512           |
-| dropout_8 (Dropout)         | (None, 3, 128)     | 0             |
-| conv1d_13 (Conv1D)          | (None, 2, 256)     | 98560         |
-| batch_normalization_9       | (None, 2, 256)     | 1024          |
-| dropout_9 (Dropout)         | (None, 2, 256)     | 0             |
-| lstm_12 (LSTM)              | (None, 2, 256)     | 525312        |
-| batch_normalization_10      | (None, 2, 256)     | 1024          |
-| dropout_10 (Dropout)        | (None, 2, 256)     | 0             |
-| lstm_13 (LSTM)              | (None, 256)        | 525312        |
-| batch_normalization_11      | (None, 256)        | 1024          |
-| dropout_11 (Dropout)        | (None, 256)        | 0             |
-| dense_6 (Dense)             | (None, 256)        | 65792         |
-| dense_7 (Dense)             | (None, 22)         | 5657          |  
-
-### **Evaluation Results on X_test**
-| Evaluation Statistic        | Value                           |
-|-----------------------------|---------------------------------|
-| Test Example Count          | 449                             |
-| Test Loss                   | 0.12511923909187317             |
-| Test Accuracy               | 0.9910913109779358 (445/449)    |
-
-### **Evaluation Conclusions**
-
-These results demonstrate that the model effectively recognizes phonemes with high accuracy while exhibiting low loss levels. However, the model might be overfitting considering the limited data and quick achievement of 95%+ accuracy. For more phonemes, a larger model size could help scale the number of classes, or a change in hyperparameters, algorithms, or layers.
-
-### **Loss Graph**
-![Loss Graph](pictures/loss.png)
-
-### **Accuracy Graph**
-![Accuracy Graph](pictures/acc.png)
-
-### **Graph Evaluation**
-
-The graphs demonstrate some spikes in loss/accuracy but overall seem stable and normal. Something very strange is that the validation loss is lower than training loss, and therefore validation accuracy is higher than training accuracy, which isn't a bad thing, but we must perform more experiments to determine the cause. 
-
-### **Confusion Matrix**
-![Confusion Matrix](pictures/conf.png)
-
-### **Confusion Matrix Evaluation**
-
-The model provided promising results, with only a few misclassified phonemes in the entire test set. Ensuring high-quality recordings might help to improve the overall performance of the model.
+TBA - Should have final (first 22) phonemes recorded by 6/10/2023, and model created within a few days of that, results will be put here.
