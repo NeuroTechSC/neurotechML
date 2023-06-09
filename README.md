@@ -61,9 +61,9 @@ Recorded complementary set of phonemes (last 22), changed muscle groups, greatly
 ## <a id="file-descriptions" style="color: inherit; text-decoration: none;"><u>File Descriptions</u></a>
 
 - `EMG_Data_Processing_first_22.ipynb` - preprocessing script that cleans the data for the first 22 phonemes and formats it into training examples
-- `EMG_Data_Processing_last_22.ipynb` - preprocessing script that cleans the data for the last 22 phonemes and formats it into training examples
+- `EMG_Data_Processing_last_22_5_5_final.ipynb` - preprocessing script that cleans the data for the last 22 phonemes and formats it into training examples
 - `LSTM_RNN_first_22.ipynb` - a model that reached ~99% test accuracy on 22 diverse phonemes, has training code + visualization
-- `LSTM_RNN_last_22.ipynb` - a model that reached ~98.3% test accuracy on the other set of 22 diverse phonemes and a silence/rest class, has training code + visualization
+- `LSTM_RNN_last_22_5_5_final.ipynb` - a model that reached ~98.3% test accuracy on the other set of 22 diverse phonemes and a silence/rest class, has training code + visualization
 - `Project_Methods.png` - image showing history of recording sessions 
 - `git_push_script.bat` - batch script to quickly push all changes to the repository with a commit message
 - `archive/` - folder which contains old model training and data processing notebooks
