@@ -49,8 +49,9 @@ Recorded complementary set of phonemes (last 22), changed muscle groups, greatly
 8. Expanded from initial five phonemes `bviou` to a diverse set of 22, attempted recording with 7 channels/muscle groups (attempt failed, only 3 usable channels)
 9. Processed data and modified model hyperparameters to scale to more classes, achieved ~99% accuracy on test data with ~836,000 parameters (see `LSTM_RNN_first_22.ipynb`)
 10. Collected data for remaining 22 phonemes, used 4 new muscle groups/channels, quality recordings got processed into super clean data
-11. Trained model which achieved ~98.3% accuracy on test data with 1,373,591 parameters (see `LSTM_RNN_last_22.ipynb`)
+11. Trained model which achieved ~98.3% accuracy on test data (10, 10) with 1,373,591 parameters (see `LSTM_RNN_last_22.ipynb`)
 12. Added section to data processing notebook which tests model on entire original recording (see `EMG_Data_Processing_last_22.ipynb`)
+11. Trained model which achieved ~90.0% accuracy on test data (5, 5) with 1,369,751 parameters (see `LSTM_RNN_last_22.ipynb`)
 
 ### **Next Steps**
 1. Re-record first 22 phonemes with new muscle groups
@@ -63,7 +64,7 @@ Recorded complementary set of phonemes (last 22), changed muscle groups, greatly
 - `EMG_Data_Processing_first_22.ipynb` - preprocessing script that cleans the data for the first 22 phonemes and formats it into training examples
 - `EMG_Data_Processing_last_22_5_5_final.ipynb` - preprocessing script that cleans the data for the last 22 phonemes and formats it into training examples
 - `LSTM_RNN_first_22.ipynb` - a model that reached ~99% test accuracy on 22 diverse phonemes, has training code + visualization
-- `LSTM_RNN_last_22_5_5_final.ipynb` - a model that reached ~98.3% test accuracy on the other set of 22 diverse phonemes and a silence/rest class, has training code + visualization
+- `LSTM_RNN_last_22_5_5_final.ipynb` - a model that reached ~99.0% test accuracy on the other set of 22 diverse phonemes and a silence/rest class, has training code + visualization
 - `Project_Methods.png` - image showing history of recording sessions 
 - `git_push_script.bat` - batch script to quickly push all changes to the repository with a commit message
 - `archive/` - folder which contains old model training and data processing notebooks
