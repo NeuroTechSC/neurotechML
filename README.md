@@ -51,7 +51,7 @@ Recorded complementary set of phonemes (last 22), changed muscle groups, greatly
 10. Collected data for remaining 22 phonemes, used 4 new muscle groups/channels, quality recordings got processed into super clean data
 11. Trained model which achieved ~98.3% accuracy on test data (10, 10) with 1,373,591 parameters (see `LSTM_RNN_last_22.ipynb`)
 12. Added section to data processing notebook which tests model on entire original recording (see `EMG_Data_Processing_last_22.ipynb`)
-13. Trained model which achieved ~90.0% accuracy on test data (5, 5) with 1,369,751 parameters (see `LSTM_RNN_last_22.ipynb`)
+13. Trained model which achieved ~99.0% accuracy on test data (5, 5) with 1,369,751 parameters (see `LSTM_RNN_last_22.ipynb`)
 
 ### **Next Steps**
 1. Re-record first 22 phonemes with new muscle groups
