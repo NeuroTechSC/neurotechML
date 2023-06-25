@@ -37,34 +37,43 @@ Expanded from initial five phonemes `bviou` to a diverse set of 22. Improved dat
 
 Recorded complementary set of phonemes (last 22), changed muscle groups, greatly improved data quality! Accounted for more robust/diverse silence/rest class in processing, upped model parameter count, got great performance. Added model performance analysis section to data processing notebook (see `LSTM_RNN_last_22.ipynb`).
 
+### **Machine Learning Update IV**
+
+Had session to collect diverse set of recordings with new muscle groups: Depressor labii inferioris (DLI), Orbicularis oris superior (OOS), Orbicularis oris inferior (OOI), and the Platysma (PLA)
+
+- all 44 phonemes, each said 10 times (`data/chris_final/data_all44.csv`)
+- 10 test words broken into syllables (`data/chris_final/test_sentences/vocal_test_words.csv`)
+- 10 test sentences (`data/chris_final/test_sentences/vocal_test_sentences.csv`)
+- ABCs vocal/whispered (`data/chris_final/ABCs/vocal_and_whispered_ABCs.csv`)
+- ABCs silent (`data/chris_final/ABCs/silent_ABCs.csv`)
+- Research Abstract vocal/whispered (`data/chris_final/research_abstract/vocal_and_whispered_research_abstract.csv`)
+- Research Abstract silent (`data/chris_final/research_abstract/silent_research_abstract.csv`)
+
 ## <a id="project-timeline" style="color: inherit; text-decoration: none;"><u>Project Timeline</u></a>
 
-1. Came up with a design plan and chose model architecture (TMC-ViT)
-2. Collected data for 5 phonemes
-3. Finished preprocessing data
+1. Came up with a design plan and chose model architecture (TMC-ViT) - `early 2023`
+2. Collected data for 5 phonemes - `2023/04/19`
+3. Finished preprocessing data - `2023/04/24`
 4. Analyzed data and presented findings at the California Neurotech Conference on April 29th, 2023 (see Research Abstract section)
-5. Assessed model viability and are considering a pivot from TMC-ViT to an LSTM/RNN network
+5. Assessed model viability and are considering a pivot from TMC-ViT to an LSTM/RNN network - `2023/05/14`
 6. Created training examples with various hyperparameters (see `data/`)
 7. Pivoted to LSTM/RNN architecture, achieved near 100% accuracy on test data with ~155,000 parameters (see `archive/LSTM_RNN_bviou.ipynb`)
-8. Expanded from initial five phonemes `bviou` to a diverse set of 22, attempted recording with 7 channels/muscle groups (attempt failed, only 3 usable channels)
+8. Expanded from initial five phonemes `bviou` to a diverse set of 22, attempted recording with 7 channels/muscle groups (attempt failed, only 3 usable channels) - `2023/05/28`
 9. Processed data and modified model hyperparameters to scale to more classes, achieved ~99% accuracy on test data with ~836,000 parameters (see `LSTM_RNN_first_22.ipynb`)
-10. Collected data for remaining 22 phonemes, used 4 new muscle groups/channels, quality recordings got processed into super clean data
-11. Trained model which achieved ~98.3% accuracy on test data (10, 10) with 1,373,591 parameters (see `LSTM_RNN_last_22.ipynb`)
-12. Added section to data processing notebook which tests model on entire original recording (see `EMG_Data_Processing_last_22.ipynb`)
-13. Trained model which achieved ~99.0% accuracy on test data (5, 5) with 1,369,751 parameters (see `LSTM_RNN_last_22.ipynb`)
+10. Collected data for remaining 22 phonemes, used 4 new muscle groups/channels, quality recordings got processed into super clean data - `2023/06/08`
+11. Trained model which achieved ~98.3% accuracy on test data (window=10) with 1,373,591 parameters (see `LSTM_RNN_last_22.ipynb`)
+12. Trained model which achieved ~99.0% accuracy on test data (window=5) with 1,369,751 parameters (see `LSTM_RNN_last_22.ipynb`)
+13. Recorded diverse set of sEMG data (see `data/chris_final/`) with 4 new muscle groups - `2023/06/09`
+14. Made training example sets with window sizes 5, 10, and 30.
+15. Trained various models, experimented with hyperparameters and network architectures
+16. Assessed data processing methods `2023/06/22`
 
 ### **Next Steps**
-1. Re-record first 22 phonemes with new muscle groups
-2. Assess the viability of a second model to correct phoneme/letter-level errors (phoneme list to word string model?)
-3. Build a real-time transcription app
-4. Upgrade model to whispered/subvocal phoneme recognition.
+1. Build a real-time transcription app
+2. Upgrade model to whispered/subvocal phoneme recognition.
 
 ## <a id="file-descriptions" style="color: inherit; text-decoration: none;"><u>File Descriptions</u></a>
 
-- `EMG_Data_Processing_first_22.ipynb` - preprocessing script that cleans the data for the first 22 phonemes and formats it into training examples
-- `EMG_Data_Processing_last_22_5_5_final.ipynb` - preprocessing script that cleans the data for the last 22 phonemes and formats it into training examples
-- `LSTM_RNN_first_22.ipynb` - a model that reached ~99% test accuracy on 22 diverse phonemes, has training code + visualization
-- `LSTM_RNN_last_22_5_5_final.ipynb` - a model that reached ~99.0% test accuracy on the other set of 22 diverse phonemes and a silence/rest class, has training code + visualization
 - `Project_Methods.png` - image showing history of recording sessions 
 - `git_push_script.bat` - batch script to quickly push all changes to the repository with a commit message
 - `archive/` - folder which contains old model training and data processing notebooks
@@ -76,4 +85,4 @@ Recorded complementary set of phonemes (last 22), changed muscle groups, greatly
 
 ## <a id="file-descriptions" style="color: inherit; text-decoration: none;"><u>Results</u></a>
 
-TBA - Should have final (first 22) phonemes recorded by 6/10/2023, and model created within a few days of that, results will be put here.
+TBA - Need to do lots of stuff and put a description here
