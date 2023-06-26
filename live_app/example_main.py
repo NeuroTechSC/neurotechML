@@ -1,7 +1,6 @@
 import threading
 import time
-from model import ThreadClass
-from keras.models import load_model
+from model import DataThread
 
 print("Started example_main.py")
 
@@ -13,8 +12,8 @@ print("Loaded model")
 # Create a button event
 button_event = threading.Event()
 
-# Create an instance of ThreadClass
-thread = ThreadClass(1, "data_all44.csv", model_path, button_event)
+# Create an instance of DataThread
+thread = DataThread(1, "data_all44.csv", model_path, button_event)
 
 print("Created thread")
 
@@ -37,6 +36,6 @@ button_event.clear()
 
 print("Button stopped")
 
-time.sleep(0.5)
+time.sleep(0.2)
 
 print("example_main.py ended")
