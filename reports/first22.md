@@ -203,20 +203,3 @@ Total params: 837,783
 ### **Evaluation Conclusions**
 
 These results demonstrate that the model effectively recognizes phonemes with high accuracy while exhibiting low loss levels. However, the model might be overfitting considering the limited data and quick achievement of 95%+ accuracy. For more phonemes, a larger model size could help scale the number of classes, or a change in hyperparameters, algorithms, or layers.
-
-### **Loss Graph**
-![Loss Graph](pictures/loss.png)
-
-### **Accuracy Graph**
-![Accuracy Graph](pictures/acc.png)
-
-### **Graph Evaluation**
-
-The graphs demonstrate some spikes in loss/accuracy but overall seem stable and normal. Something very strange is that the validation loss is lower than training loss, and therefore validation accuracy is higher than training accuracy, which isn't a bad thing, but we must perform more experiments to determine the cause. 
-
-### **Confusion Matrix**
-![Confusion Matrix](pictures/conf.png)
-
-### **Confusion Matrix Evaluation**
-
-The model provided promising results, with only a few misclassified phonemes in the entire test set. Ensuring high-quality recordings might help to improve the overall performance of the model.
