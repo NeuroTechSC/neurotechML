@@ -56,7 +56,7 @@ After extensive research and experimentation, we've come to the following conclu
 - It is very difficult to classify subvocal phonemes using a model trained on vocalized phonemes. Possible solutions include transfer learning or massive amounts of subvocal data.
 - The method in which we collected data (individual phoneme pronunciations for simplicity, which eliminated the need for manual data labeling) does not carry over well to detecting phonemes within smooth/continuous 
 conversation and word vocalization. Ideally data should consist of words/phrases/text being vocalized/whispered/subvocalized, and then labeling each segment with the proper phoneme/
-- Muscle group choices/electrode placement greatly impacts the quality of data, more channels would definetely help the model's performance, and a mask to hold the electrodes in place reliably would decrease outlier spikes, improving data quality.
+- Muscle group choices/electrode placement greatly impacts the quality of data, more channels would definitely help the model's performance, and a mask to hold the electrodes in place reliably would decrease outlier spikes, improving data quality.
 - Normalization method is very important to consider, we used min-max normalization based on the entire recording to generate training examples for our models, but didn't consider that the live application would receive data as a stream, therefore not really matching the method used in training (bad for accuracy). Experimented with normalizing within each segment (which could be done with a stream) rather than over the entire recording, retrained the model, but this resulted in a complete failure to improve, with several possible contributing reasons. 
 - Need a lot lot more data to build something useful.
 
@@ -78,16 +78,17 @@ conversation and word vocalization. Ideally data should consist of words/phrases
 13. Recorded diverse set of sEMG data (see `data/chris_final/`) with 4 new muscle groups - `2023/06/09`
 14. Made training example sets with window sizes 5, 10, and 30 (see `Data_Processing_Final.ipynb`) - `2023/06/15`
 15. Trained various models, experimented with hyperparameters and network architectures
-16. Assessed and examined data processing methods - `2023/06/22`
-17. Experimented with different data processing methods, no promising results
-18. Combined the model with a multi-threaded python program to predict phonemess in real time (see `live_app/`) - `2023/06/25`
-19. Collaborated with club members to record final project presentation for the NTX Student Club Competition 2023 - `2023/06/27`
+16. Achieved ~98.1% accuracy on test data (window=5) with 223,533 parameters
+17. Assessed and examined data processing methods - `2023/06/22`
+18. Experimented with different data processing methods, no promising results
+19. Combined the model with a multi-threaded python program to predict phonemes in real time (see `live_app/`) - `2023/06/25`
+20. Collaborated with club members to record final project presentation for the NTX Student Club Competition 2023 - `2023/06/27`
 
 ### **Next Steps**
 
 Many many possible next steps: 
 - Get more and better data
-- Figure out best data processing/traning example generation methods
+- Figure out best data processing/training example generation methods
 - Improve model architecture/hyperparameters
 - Get the live app working
 - Build a better, FPGA-based hardware board for data collection
@@ -128,7 +129,7 @@ This notebook outlines a complete data pipeline for pre-processing, visualizing,
 
 9. **Identify Segments**: Segments are identified with 1s in the rolling maximum of "BUTTON".
 
-10. **Seperate Segments**: The identified segments are then separated into different phoneme groupings.
+10. **Separate Segments**: The identified segments are then separated into different phoneme groupings.
 
 11. **Plot and Calculate Segment Statistics**: The segments are plotted and statistical analysis is performed.
 
@@ -148,8 +149,8 @@ The outcome of this notebook is a set of files containing preprocessed, segmente
 
 ## <a id="data-processing-results" style="color: inherit; text-decoration: none;"><u>Data Processing Results and Analysis</u></a>
 
-### **Normalied Data**
-![Normalied Data](pictures/normalized.png)
+### **Normalized Data**
+![Normalized Data](pictures/normalized.png)
 
 ### **Hyperparameter Choices**
 | Hyperparameter | Value     |
