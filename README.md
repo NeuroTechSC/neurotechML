@@ -96,14 +96,20 @@ Many many possible next steps:
 
 ## <a id="file-descriptions" style="color: inherit; text-decoration: none;"><u>File Descriptions</u></a>
 
+- `Data_Processing_Final.ipynb` - Python notebook with the data processing for our final model
+- `Model_Training_Final.ipynb` - Python notebook with the ML/model training for our final model
+- `Hardware_Procedure.pdf` - procedure for hardware setup/data collection
+- `Conference_Poster.pdf` - poster that was submitted to the California Neurotechnology Conference 2023
+- `Slideshow_Presentation.pdf` - PDF of the final presentation slideshow
 - `Project_Methods.png` - image showing history of recording sessions 
-- `git_push_script.bat` - batch script to quickly push all changes to the repository with a commit message
-- `archive/` - folder which contains old model training and data processing notebooks
-- `data/` - folder which contains the raw .csv files from the recordings, as well as formatted training example/label .npy files
-- `gtp_convos/` - discussions with GPT-4 about the project
-- `models/` - folder which contains saved models, not just weights
-- `pictures/` - folder which contains pictures for the README.md
-- `reports/` - folder which contains markdown reports of the Notebooks for data processing and machine learning results and analysis
+- `git_push_script.bat` - batch script to quickly push all changes to the repository with a commit messagex
+- `archive/` - old model training and data processing notebooks
+- `data/` - raw .csv files from the data collection, as well as formatted training example/label .npy files
+- `demo/` - videos of demo recording
+- `live_app/` - code for the live transcription app
+- `models/` - saved Keras model files, not just weights 
+- `pictures/` - pictures for the README.md and general info
+- `resources/` - helpful documents that give context for adjacent research/ideas
 
 ## <a id="data-processing-pipeline" style="color: inherit; text-decoration: none;"><u>Data Processing Notebook Overview</u></a>
 
